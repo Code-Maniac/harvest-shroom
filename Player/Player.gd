@@ -7,8 +7,13 @@ export(float) var max_speed = 120.0 setget set_max_speed, get_max_speed
 export(float) var acceleration = 360.0 setget set_acceleration, get_acceleration
 export(float) var friction = 480.0
 
+# camera rotation vars
+export(float) var max_camera_rot_acceleration = 30.0
+export(float) var max_camera_rot_speed = 50.0
+export(float) var camera_rot_return_speed = 30.0
+var camera_approach_angle = 0.0
+
 var velocity = Vector2.ZERO
-var distance_moved = 0.0
 
 # The mushroom that is currently being eaten.
 # When the eat state ends this is then processed and moved to the mushrooms
@@ -17,9 +22,11 @@ var eaten_mushroom = null
 # player starts having eaten zero mushrooms
 var mushrooms = []
 
+onready var death_effect_preload = preload("res://Effects/DeathEffect.tscn")
+
 enum {
 	STATE_MOVING,
-	STATE_EATING
+	STATE_EATING,
 	STATE_DYING
 }
 var state = STATE_MOVING
@@ -27,12 +34,18 @@ var state = STATE_MOVING
 onready var animPlayer = $AnimationPlayer
 onready var animTree = $AnimationTree
 onready var animState = $AnimationTree.get("parameters/playback")
-
 var blend_anims = [
 	"Idle",
 	"Walk",
 	"Eat"
 ]
+
+# onready var camera = get_node("/root/World/Camera2D")
+# onready var camera_transform = $RemoteTransform2D
+
+var rng = RandomNumberGenerator.new()
+
+var points = 0
 
 # The entire concept of this game is to harvest mushrooms
 # but picking mushrooms will do certain things.
@@ -47,12 +60,12 @@ var blend_anims = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	add_to_group("Player")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# print(state)
 	match state:
 		STATE_MOVING:
 			_state_moving(delta)
@@ -60,6 +73,11 @@ func _process(delta):
 			_state_eating(delta)
 		STATE_DYING:
 			_state_dying(delta)
+
+	# if mushrooms.size() > 0:
+	# 	_fuck_with_camera(delta)
+	# else:
+	# 	_reset_camera(delta)
 
 func _state_moving(delta):
 	var left = Input.get_action_strength("ui_left");
@@ -79,7 +97,8 @@ func _state_moving(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 
 	velocity = move_and_slide(velocity)
-	distance_moved += (velocity.length() * delta)
+
+	_handle_mushrooms(velocity.length() * delta)
 
 func _state_eating(delta):
 	# all we do here is set the eating animation
@@ -92,17 +111,40 @@ func _state_dying(delta):
 	# when the dying animation finishes the player is freed and the level will
 	# restart with the player respawning
 	animState.travel("Die")
-	pass
+
+	var death_effect = death_effect_preload.instance()
+	get_parent().add_child(death_effect)
+	death_effect.global_position = global_position
+	queue_free()
 
 func _set_blend_position(blend_pos):
 	for item in blend_anims:
 		animTree.set("parameters/" + item + "/blend_position", blend_pos)
 
+# func _fuck_with_camera(delta):
+# 	camera_rot_velocity.move_toward(Vector2(rng.randf_range(-5, 5), 0),  max_camera_rot_acceleration)
+# 	print(camera_rot_velocity)
+# 	camera_transform.rotation_degrees = camera_rot_velocity.length() * 45
+# 	# var rot = camera_transform.rotation_degrees
+# 	# rot += rng.randf_range(-5, +5)
+# 	# rot = clamp(rot, -45, 45)
+# 	# camera_transform.rotation_degrees = rot
+
+# func _reset_camera(delta):
+# 	camera_transform_approach
+# 	camera_rot_velocity.move_toward(Vector2.ZERO, delta * camera_rot_return_speed)
+
 func eat_mushroom(mushroom):
 	# what we do with the mushroom will depend on the type
-	eaten_mushroom = mushroom.get_node("MushroomStats")
+	eaten_mushroom = mushroom.get_node("MushroomStats").duplicate()
 	state = STATE_EATING
 	velocity = Vector2.ZERO
+
+func _handle_mushrooms(distance_moved):
+	# print(mushrooms)
+	for mushroom in mushrooms:
+		if mushroom.debuff == Debuff.DEATH_OVER_DISTANCE:
+			mushroom.distance_moved += distance_moved
 
 
 func set_health(val):
@@ -148,3 +190,16 @@ func _on_MushroomDetector_area_entered(area:Area2D):
 
 func eating_animation_finished():
 	state = STATE_MOVING
+	eaten_mushroom.active = true
+	mushrooms.append(eaten_mushroom)
+	eaten_mushroom.connect("expired", self, "_on_mushroom_debuff_expired")
+	eaten_mushroom = null
+
+func _on_mushroom_debuff_expired(debuff, strength):
+	print("DEBUFF EXPIRED")
+	match debuff:
+		Debuff.DEATH_OVER_DISTANCE:
+			# we die if we ever get this effect
+			state = STATE_DYING
+
+
