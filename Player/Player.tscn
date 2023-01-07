@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/ForagerBill.png" type="Texture" id=2]
 [ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=3]
 [ext_resource path="res://SoundEffects/debuff.wav" type="AudioStream" id=4]
 [ext_resource path="res://SoundEffects/buff.wav" type="AudioStream" id=5]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape2D" id=40]
 radius = 8.0
@@ -478,7 +479,7 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 1, -1 )
+position = Vector2( -4, 0 )
 collision_layer = 2
 script = ExtResource( 1 )
 
@@ -538,5 +539,9 @@ parameters/Walk/blend_position = Vector2( -0.00245297, 0.00249374 )
 [node name="AnimSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( -1, 1 )
 stream = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 6 )]
 
 [connection signal="area_entered" from="MushroomDetector" to="." method="_on_MushroomDetector_area_entered"]

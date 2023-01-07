@@ -27,9 +27,14 @@ onready var death_effect_preload = preload("res://Effects/DeathEffect.tscn")
 enum {
 	STATE_MOVING,
 	STATE_EATING,
-	STATE_DYING
+	STATE_DYING,
+	STATE_WIN
 }
-var state = STATE_MOVING
+export(int,
+	"Moving",
+	"Eating",
+	"Dying") var start_state = STATE_MOVING
+onready var state = start_state
 
 onready var animPlayer = $AnimationPlayer
 onready var animTree = $AnimationTree
@@ -40,12 +45,17 @@ var blend_anims = [
 	"Eat"
 ]
 
+var hud = null
+
 # onready var camera = get_node("/root/World/Camera2D")
 # onready var camera_transform = $RemoteTransform2D
 
 var rng = RandomNumberGenerator.new()
 
 var points = 0
+
+signal mushroom_eaten(mushroom)
+signal mushroom_cured(mushroom)
 
 # The entire concept of this game is to harvest mushrooms
 # but picking mushrooms will do certain things.
@@ -61,7 +71,11 @@ var points = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	add_to_group("Player")
+
+	hud = $CanvasLayer.get_node("HUD")
+	if hud != null:
+		connect("mushroom_eaten", hud, "on_mushroom_eaten")
+		connect("mushroom_cured", hud, "on_mushroom_cured")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,6 +87,8 @@ func _process(delta):
 			_state_eating(delta)
 		STATE_DYING:
 			_state_dying(delta)
+		STATE_WIN:
+			_state_win(delta)
 
 	# if mushrooms.size() > 0:
 	# 	_fuck_with_camera(delta)
@@ -117,6 +133,11 @@ func _state_dying(delta):
 	death_effect.global_position = global_position
 	queue_free()
 
+func _state_win(delta):
+	# all we are doing here is waiting for the win animation to finish
+	# then 
+	pass
+
 func _set_blend_position(blend_pos):
 	for item in blend_anims:
 		animTree.set("parameters/" + item + "/blend_position", blend_pos)
@@ -133,18 +154,6 @@ func _set_blend_position(blend_pos):
 # func _reset_camera(delta):
 # 	camera_transform_approach
 # 	camera_rot_velocity.move_toward(Vector2.ZERO, delta * camera_rot_return_speed)
-
-func eat_mushroom(mushroom):
-	# what we do with the mushroom will depend on the type
-	eaten_mushroom = mushroom.get_node("MushroomStats").duplicate()
-	state = STATE_EATING
-	velocity = Vector2.ZERO
-
-func _handle_mushrooms(distance_moved):
-	# print(mushrooms)
-	for mushroom in mushrooms:
-		if mushroom.debuff == Debuff.DEATH_OVER_DISTANCE:
-			mushroom.distance_moved += distance_moved
 
 
 func set_health(val):
@@ -184,19 +193,58 @@ func _on_MushroomDetector_area_entered(area:Area2D):
 	# we need to get the mushrooms stats from the mushroom
 	# and eat it
 	# then free the area
-	eat_mushroom(area)
+	_eat_mushroom(area)
 	area.queue_free()
 	pass
 
+func _eat_mushroom(mushroom):
+	# what we do with the mushroom will depend on the type
+	eaten_mushroom = mushroom.get_node("MushroomStats").duplicate()
+	state = STATE_EATING
+	velocity = Vector2.ZERO
+
+func _handle_mushrooms(distance_moved):
+	# print(mushrooms)
+	for mushroom in mushrooms:
+		if mushroom.debuff == Debuff.DEATH_OVER_DISTANCE:
+			mushroom.distance_moved += distance_moved
+
+func _cure_debuffs(cure):
+	if cure == DebuffType.NONE:
+		pass
+	elif cure == DebuffType.ALL:
+		# cure all the mushrooms effects and clear them all
+		for mushroom in mushrooms:
+			emit_signal("mushroom_cured", mushroom)
+			mushroom.queue_free()
+
+		mushrooms.clear()
+	else:
+		# remove any mushroom where the cure matches the type
+		var new_array = []
+		for mushroom in mushrooms:
+			if cure != mushroom.debuff_type:
+				new_array.append(mushroom)
+			else:
+				emit_signal("mushroom_cured", mushroom)
+				mushroom.queue_free()
+
+		mushrooms = new_array
+
+
+
+
 func eating_animation_finished():
 	state = STATE_MOVING
+
+	_cure_debuffs(eaten_mushroom.debuff_cure)
 	eaten_mushroom.active = true
 	mushrooms.append(eaten_mushroom)
 	eaten_mushroom.connect("expired", self, "_on_mushroom_debuff_expired")
+	emit_signal("mushroom_eaten", eaten_mushroom)
 	eaten_mushroom = null
 
 func _on_mushroom_debuff_expired(debuff, strength):
-	print("DEBUFF EXPIRED")
 	match debuff:
 		Debuff.DEATH_OVER_DISTANCE:
 			# we die if we ever get this effect

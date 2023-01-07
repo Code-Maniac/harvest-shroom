@@ -3,10 +3,10 @@ extends Control
 onready var player = get_parent()
 onready var lblDistanceMoved = $DistanceMoved
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# auto load the item we are going to use for steps till death
+onready var steps_till_death_preload = preload("res://HUD/StepsTillDeath.tscn")
 
+var controls = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +15,29 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	# print(player)
-	# lblDistanceMoved.text = str(player.get("distance_moved"))
+	# go through the controls and set their positions
+	for i in controls.size():
+		controls[i].rect_position.y = (i * 16)
 	pass
+
+
+# add ui item for showing when the player is going to die
+func on_mushroom_eaten(mushroom):
+	print("EATEN:")
+	print(mushroom)
+	var control = steps_till_death_preload.instance()
+	control.mushroom = mushroom
+	add_child(control)
+	controls.append(control)
+
+# remove the ui item for the cured mushroom
+func on_mushroom_cured(mushroom):
+	# remove the control that contains the mushroom
+	print("CURE:")
+	print(mushroom)
+	for i in controls.size():
+		var control = controls[i]
+		if control.mushroom == mushroom:
+			controls.remove(i)
+			control.queue_free()
+			return # mushroom should never be duplicated onto more than one control
