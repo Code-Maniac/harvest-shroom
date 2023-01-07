@@ -88,7 +88,7 @@
 5/shapes = [  ]
 5/z_index = 0
 
-[node name="TileMap" type="TileMap"]
+[node name="GrassTileMap" type="TileMap"]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1

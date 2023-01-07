@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/ForagerBill.png" type="Texture" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape2D" id=40]
+radius = 8.0
+height = 2.0
+
+[sub_resource type="CapsuleShape2D" id=42]
 radius = 8.0
 height = 2.0
 
@@ -501,6 +505,14 @@ frame = 1
 position = Vector2( -1, -8 )
 shape = SubResource( 40 )
 
+[node name="LevelEndDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndDetector"]
+position = Vector2( -1, -8 )
+shape = SubResource( 42 )
+
 [node name="MushroomDetector" type="Area2D" parent="."]
 position = Vector2( -1, -8 )
 collision_layer = 0
@@ -544,4 +556,5 @@ stream = ExtResource( 4 )
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource( 6 )]
 
+[connection signal="area_entered" from="LevelEndDetector" to="." method="_on_LevelEndDetector_area_entered"]
 [connection signal="area_entered" from="MushroomDetector" to="." method="_on_MushroomDetector_area_entered"]

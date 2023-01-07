@@ -12,6 +12,7 @@ export(float) var max_camera_rot_acceleration = 30.0
 export(float) var max_camera_rot_speed = 50.0
 export(float) var camera_rot_return_speed = 30.0
 var camera_approach_angle = 0.0
+onready var camera = get_node("/root/World/Camera")
 
 var velocity = Vector2.ZERO
 
@@ -70,12 +71,16 @@ signal mushroom_cured(mushroom)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	rng.randomize()
+	rng.randomize( )
 
 	hud = $CanvasLayer.get_node("HUD")
 	if hud != null:
-		connect("mushroom_eaten", hud, "on_mushroom_eaten")
-		connect("mushroom_cured", hud, "on_mushroom_cured")
+		var _tmp = connect("mushroom_eaten", hud, "on_mushroom_eaten")
+		_tmp = connect("mushroom_cured", hud, "on_mushroom_cured")
+
+	$RemoteTransform2D.remote_path = "/root/World/Camera"
+
+	print(collision_layer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -116,13 +121,13 @@ func _state_moving(delta):
 
 	_handle_mushrooms(velocity.length() * delta)
 
-func _state_eating(delta):
+func _state_eating(_delta):
 	# all we do here is set the eating animation
 	# when the eating animation ends it will set the state back to moving
 	animState.travel("Eat")
 	pass
 
-func _state_dying(delta):
+func _state_dying(_delta):
 	# all we do here is set the dying animation here
 	# when the dying animation finishes the player is freed and the level will
 	# restart with the player respawning
@@ -133,9 +138,11 @@ func _state_dying(delta):
 	death_effect.global_position = global_position
 	queue_free()
 
-func _state_win(delta):
+func _state_win(_delta):
 	# all we are doing here is waiting for the win animation to finish
 	# then 
+	velocity = Vector2.ZERO
+	# animState.travel("Win")
 	pass
 
 func _set_blend_position(blend_pos):
@@ -250,4 +257,12 @@ func _on_mushroom_debuff_expired(debuff, strength):
 			# we die if we ever get this effect
 			state = STATE_DYING
 
+
+func _on_LevelEndDetector_area_entered(area:Area2D):
+	state = STATE_WIN
+	get_node("/root/World").set_next_level() 
+	# we then want to set the animation then wait for the celebration animation
+	# to end
+	# then change the level
+	# maybe have a transition animation - ala fade out / fade in
 
