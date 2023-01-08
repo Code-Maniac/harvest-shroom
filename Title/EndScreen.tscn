@@ -107,7 +107,7 @@ position = Vector2( 238, 128 )
 position = Vector2( 202, 116 )
 
 [node name="YellowMushroom" parent="." instance=ExtResource( 1 )]
-position = Vector2( 228, 100 )
+position = Vector2( 244, 102 )
 
 [node name="GoldMushroom" parent="." instance=ExtResource( 8 )]
 position = Vector2( 124, 77 )
@@ -152,7 +152,7 @@ position = Vector2( -57, -32 )
 position = Vector2( 200, 75 )
 
 [node name="Bird" parent="." instance=ExtResource( 2 )]
-position = Vector2( 228, 78 )
+position = Vector2( 225, 78 )
 
 [node name="Bird2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 35, 54 )
@@ -179,4 +179,5 @@ align = 1
 position = Vector2( 164, 96 )
 frames = SubResource( 13 )
 animation = "Tripping"
+frame = 6
 playing = true

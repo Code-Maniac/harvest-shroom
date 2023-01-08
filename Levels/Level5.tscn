@@ -29,13 +29,13 @@ position = Vector2( 42, 0 )
 debuff_mod_strength = 400.0
 
 [node name="RedMushroom" parent="YSort" index="2" instance=ExtResource( 2 )]
-position = Vector2( 341, -20 )
+position = Vector2( 346, 5 )
 
 [node name="Sprite" parent="YSort/RedMushroom" index="0"]
 position = Vector2( 0, -1 )
 
 [node name="MushroomStats" parent="YSort/RedMushroom" index="2"]
-debuff_mod_strength = 250.0
+debuff_mod_strength = 270.0
 
 [node name="RedMushroom2" parent="YSort" index="3" instance=ExtResource( 2 )]
 position = Vector2( 252, 31 )
@@ -152,9 +152,36 @@ position = Vector2( 425, -12 )
 position = Vector2( 0, -1 )
 
 [node name="MushroomStats" parent="YSort/RedMushroom10" index="2"]
-debuff_mod_strength = 250.0
+debuff_mod_strength = 50.0
 
-[node name="RedMushroom11" parent="YSort" index="16" instance=ExtResource( 2 )]
+[node name="RedMushroom16" parent="YSort" index="16" instance=ExtResource( 2 )]
+position = Vector2( 475, 14 )
+
+[node name="Sprite" parent="YSort/RedMushroom16" index="0"]
+position = Vector2( 0, -1 )
+
+[node name="MushroomStats" parent="YSort/RedMushroom16" index="2"]
+debuff_mod_strength = 50.0
+
+[node name="RedMushroom17" parent="YSort" index="17" instance=ExtResource( 2 )]
+position = Vector2( 478, -31 )
+
+[node name="Sprite" parent="YSort/RedMushroom17" index="0"]
+position = Vector2( 0, -1 )
+
+[node name="MushroomStats" parent="YSort/RedMushroom17" index="2"]
+debuff_mod_strength = 10.0
+
+[node name="RedMushroom18" parent="YSort" index="18" instance=ExtResource( 2 )]
+position = Vector2( 478, -31 )
+
+[node name="Sprite" parent="YSort/RedMushroom18" index="0"]
+position = Vector2( 0, -1 )
+
+[node name="MushroomStats" parent="YSort/RedMushroom18" index="2"]
+debuff_mod_strength = 10.0
+
+[node name="RedMushroom11" parent="YSort" index="19" instance=ExtResource( 2 )]
 position = Vector2( 433, -69 )
 
 [node name="Sprite" parent="YSort/RedMushroom11" index="0"]
@@ -185,4 +212,7 @@ position = Vector2( 515, -45 )
 [editable path="YSort/RedMushroom15"]
 [editable path="YSort/RedMushroom9"]
 [editable path="YSort/RedMushroom10"]
+[editable path="YSort/RedMushroom16"]
+[editable path="YSort/RedMushroom17"]
+[editable path="YSort/RedMushroom18"]
 [editable path="YSort/RedMushroom11"]
