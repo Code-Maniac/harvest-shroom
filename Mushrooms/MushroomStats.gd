@@ -61,6 +61,8 @@ var distance_moved = 0.0 setget set_distance
 
 var active = false
 
+var sprite_resource = ""
+
 signal expired(debuff)
 
 func set_distance(val):

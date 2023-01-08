@@ -1,7 +1,6 @@
 extends Control
 
 onready var player = get_parent()
-onready var lblDistanceMoved = $DistanceMoved
 
 # auto load the item we are going to use for steps till death
 onready var steps_till_death_preload = preload("res://HUD/StepsTillDeath.tscn")
@@ -27,6 +26,8 @@ func on_mushroom_eaten(mushroom):
 	print(mushroom)
 	var control = steps_till_death_preload.instance()
 	control.mushroom = mushroom
+	if mushroom.sprite_resource != "":
+		control.get_node("Skull").texture = load(mushroom.sprite_resource)
 	add_child(control)
 	controls.append(control)
 

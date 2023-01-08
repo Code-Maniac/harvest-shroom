@@ -4,10 +4,13 @@
 [ext_resource path="res://Mushrooms/mushroom4b.png" type="Texture" id=2]
 
 [node name="BlueMushroom" instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
 
-[node name="MushroomStats" parent="." index="2"]
+[node name="MushroomStats" parent="." index="3"]
 debuff_type = 4
 debuff_cure = 1

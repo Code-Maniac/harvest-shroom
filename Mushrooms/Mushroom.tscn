@@ -23,9 +23,5 @@ shape = SubResource( 1 )
 
 [node name="MushroomStats" type="Node" parent="."]
 script = ExtResource( 1 )
-buff = null
-buff_mod_strength = null
 debuff_mod_strength = 1000.0
-debuff_mod_strength_secondary = null
 debuff_type = 2
-debuff_cure = null

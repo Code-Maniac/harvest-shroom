@@ -48,15 +48,19 @@ animations = [ {
 } ]
 
 [node name="GoldMushroom" instance=ExtResource( 1 )]
-
-[node name="Sprite" parent="." index="0"]
-visible = false
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 10 )
+frame = 3
 playing = true
 
-[node name="MushroomStats" parent="." index="3"]
+[node name="Sprite" parent="." index="2"]
+visible = false
+
+[node name="MushroomStats" parent="." index="4"]
 debuff = 0
 debuff_type = 0
 debuff_cure = 9

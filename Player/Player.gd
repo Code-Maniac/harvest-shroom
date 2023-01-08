@@ -205,6 +205,9 @@ func _on_MushroomDetector_area_entered(area:Area2D):
 func _eat_mushroom(mushroom):
 	# what we do with the mushroom will depend on the type
 	eaten_mushroom = mushroom.get_node("MushroomStats").duplicate()
+	var texture = mushroom.get_node("Sprite").texture
+	if texture != null:
+		eaten_mushroom.sprite_resource = texture.resource_path
 	state = STATE_EATING
 	velocity = Vector2.ZERO
 

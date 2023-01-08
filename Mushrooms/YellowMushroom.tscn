@@ -4,11 +4,14 @@
 [ext_resource path="res://Mushrooms/Mushroom.tscn" type="PackedScene" id=2]
 
 [node name="YellowMushroom" instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="1"]
 texture = ExtResource( 1 )
 
-[node name="MushroomStats" parent="." index="2"]
+[node name="MushroomStats" parent="." index="3"]
 buff = 0
 buff_mod_strength = 1000.0
 debuff_mod_strength_secondary = 0.0

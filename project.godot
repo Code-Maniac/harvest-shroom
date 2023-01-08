@@ -26,11 +26,11 @@ _global_script_class_icons={
 
 [application]
 
-config/name="TheSearchForPsilocybin"
+config/name="Harvest Shroom"
 config/description="Search for fabled magic mushroom.
 Inexperienced mushroom hunters, for there are many mushrooms in the forest, and who knows what deadly effects they may possess."
 run/main_scene="res://World.tscn"
-config/icon="res://icon.png"
+config/icon="res://Mushrooms/mushroom1b.png"
 
 [display]
 
