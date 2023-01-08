@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Mushrooms/mushroom1b.png" type="Texture" id=1]
+[ext_resource path="res://Mushrooms/art/mushroom1b.png" type="Texture" id=1]
 [ext_resource path="res://Mushrooms/Mushroom.tscn" type="PackedScene" id=2]
 
 [node name="RedMushroom" instance=ExtResource( 2 )]

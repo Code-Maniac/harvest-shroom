@@ -30,7 +30,7 @@ config/name="Harvest Shroom"
 config/description="Search for fabled magic mushroom.
 Inexperienced mushroom hunters, for there are many mushrooms in the forest, and who knows what deadly effects they may possess."
 run/main_scene="res://World.tscn"
-config/icon="res://Mushrooms/mushroom1b.png"
+config/icon="res://Mushrooms/art/mushroom1b.png"
 
 [display]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MushroomMagic.png-3619ae98ddfb4b6cf8c2a48ce94da82e.stex"
+path="res://.import/GoldMushroom.png-d41cd38a16643af208d482de83620f27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mushrooms/MushroomMagic.png"
-dest_files=[ "res://.import/MushroomMagic.png-3619ae98ddfb4b6cf8c2a48ce94da82e.stex" ]
+source_file="res://Mushrooms/art/GoldMushroom.png"
+dest_files=[ "res://.import/GoldMushroom.png-d41cd38a16643af208d482de83620f27.stex" ]
 
 [params]
 

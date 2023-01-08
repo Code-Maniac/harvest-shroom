@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mushroom4b.png-d09e6f8f3fa6d7744842a78c3bd28991.stex"
+path="res://.import/log_tiles.png-04013f82c4398e9b8630b972d22a45e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mushrooms/mushroom4b.png"
-dest_files=[ "res://.import/mushroom4b.png-d09e6f8f3fa6d7744842a78c3bd28991.stex" ]
+source_file="res://AutoTiles/log_tiles.png"
+dest_files=[ "res://.import/log_tiles.png-04013f82c4398e9b8630b972d22a45e2.stex" ]
 
 [params]
 

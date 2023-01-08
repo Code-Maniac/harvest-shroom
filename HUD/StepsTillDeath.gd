@@ -19,9 +19,9 @@ func _process(delta):
 		queue_free()
 		pass
 
-	print(mushroom.sprite_resource)
-	if $Skull.texture.resource_path != mushroom.sprite_resource and mushroom.sprite_resource != "":
-		$Skull.texture = load(mushroom.sprite_resource)
+	# print(mushroom.sprite_resource)
+	# if $Skull.texture.resource_path != mushroom.sprite_resource and mushroom.sprite_resource != "":
+	# 	$Skull.texture = load(mushroom.sprite_resource)
 
 	progress_bar.set_size(Vector2(228 * mushroom.get_distance_remaining_ratio(), 16))
 	steps_remaining.text = str(int(mushroom.get_distance_remaining()))

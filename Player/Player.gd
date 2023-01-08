@@ -258,7 +258,6 @@ func _on_mushroom_debuff_expired(debuff, strength):
 
 func _on_LevelEndDetector_area_entered(area:Area2D):
 	state = STATE_WIN
-	print("LEVEL END")
 	get_node("/root/World/SceneTransition").next_scene()
 	# get_node("/root/World").set_next_level() 
 	# we then want to set the animation then wait for the celebration animation

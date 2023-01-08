@@ -22,8 +22,6 @@ func _process(_delta):
 
 # add ui item for showing when the player is going to die
 func on_mushroom_eaten(mushroom):
-	print("EATEN:")
-	print(mushroom)
 	var control = steps_till_death_preload.instance()
 	control.mushroom = mushroom
 	if mushroom.sprite_resource != "":
@@ -34,8 +32,6 @@ func on_mushroom_eaten(mushroom):
 # remove the ui item for the cured mushroom
 func on_mushroom_cured(mushroom):
 	# remove the control that contains the mushroom
-	print("CURE:")
-	print(mushroom)
 	for i in controls.size():
 		var control = controls[i]
 		if control.mushroom == mushroom:
