@@ -89,6 +89,7 @@
 5/z_index = 0
 
 [node name="GrassTileMap" type="TileMap"]
+scale = Vector2( 1.5, 1.5 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1

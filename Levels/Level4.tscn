@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Mushrooms/WhiteMushroom.tscn" type="PackedScene" id=2]
@@ -7,12 +7,11 @@
 [ext_resource path="res://Mushrooms/RedMushroom.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Mushrooms/PinkMushroom.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mushrooms/BlueMushroom.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=8]
 
 [node name="Level" instance=ExtResource( 1 )]
 
 [node name="GrassTileMap" parent="." index="0"]
-tile_data = PoolIntArray( -196613, 1, 0, -262132, 2, 0, -262131, 2, 0, -131076, 1, 0, -196600, 2, 0, -196599, 2, 0, -196597, 2, 0, -65536, 0, 1, 0, 0, 2, 458751, 0, 0, 524283, 0, 3, 524284, 0, 4, 524285, 0, 2, 524286, 0, 3, 524287, 0, 0, 458752, 0, 1, 458753, 0, 3, 458754, 0, 0, 458755, 0, 2, 458756, 0, 1, 458764, 5, 0, 720894, 0, 0, 786429, 0, 2, 786430, 0, 0, 786431, 0, 1, 720896, 0, 4, 851964, 0, 0, 851965, 0, 1, 851966, 0, 3, 851967, 0, 2, 786432, 0, 2, 917500, 0, 0, 917501, 0, 0, 917502, 0, 1, 917503, 0, 2, 851968, 4, 1, 851970, 1, 0, 983036, 0, 1, 983037, 0, 1, 983038, 0, 2, 1048572, 0, 3, 1048573, 0, 1, 1048574, 0, 4, 983040, 0, 2, 983041, 0, 2, 1114108, 0, 3, 1114109, 0, 4, 1114111, 0, 0, 1048577, 0, 1, 1048579, 4, 1, 1179643, 0, 3, 1179644, 0, 0, 1179645, 0, 4, 1179646, 4, 2, 1114113, 0, 3, 1245179, 0, 1, 1245180, 0, 2, 1245181, 0, 1, 1179648, 0, 3, 1179652, 0, 2, 1179653, 0, 1, 1310716, 0, 0, 1245184, 0, 0, 1245187, 0, 3, 1245188, 0, 2, 1245189, 0, 4, 1376251, 0, 1, 1376252, 4, 2, 1310720, 0, 3, 1310721, 0, 1, 1310722, 0, 3, 1310724, 0, 4, 1310725, 1, 1, 1441786, 0, 0, 1441787, 4, 2, 1441788, 4, 1, 1441789, 4, 0, 1441791, 0, 4, 1376256, 0, 3, 1376259, 1, 0, 1376260, 1, 0, 1376261, 0, 1, 1376262, 1, 0, 1507322, 0, 3, 1507323, 4, 0, 1507324, 4, 2, 1507325, 4, 2, 1507326, 0, 1, 1507327, 0, 1, 1441792, 0, 3, 1441793, 0, 2, 1441794, 0, 4, 1441795, 1, 2, 1441796, 1, 2, 1441797, 1, 1, 1441798, 1, 1, 1572860, 4, 1, 1507330, 0, 0, 1507331, 0, 3, 1507332, 1, 0, 1507333, 1, 1, 1572867, 0, 3, 1572869, 1, 2 )
+tile_data = PoolIntArray( -196613, 1, 0, -262132, 2, 0, -262131, 2, 0, -131076, 1, 0, -196600, 2, 0, -196599, 2, 0, -196597, 2, 0, -65536, 0, 1, 0, 0, 2, 458736, 1, 2, 458737, 1, 1, 458738, 1, 1, 458751, 0, 0, 524271, 1, 1, 524272, 1, 3, 524273, 1, 1, 524274, 1, 2, 524283, 0, 3, 524284, 0, 4, 524285, 0, 2, 524286, 0, 3, 524287, 0, 0, 458752, 0, 1, 458753, 0, 3, 458754, 0, 0, 458755, 0, 2, 458756, 0, 1, 458764, 5, 0, 589807, 1, 2, 589808, 1, 0, 589809, 1, 2, 589810, 1, 3, 655343, 1, 1, 655344, 1, 3, 655345, 1, 3, 655346, 1, 2, 720879, 1, 2, 720880, 1, 3, 720881, 1, 0, 720882, 1, 3, 720894, 0, 0, 786415, 1, 3, 786416, 1, 3, 786417, 1, 2, 786418, 1, 1, 786429, 0, 2, 786430, 0, 0, 786431, 0, 1, 720896, 0, 4, 851951, 1, 1, 851952, 1, 2, 851953, 1, 1, 851954, 1, 3, 851964, 0, 0, 851965, 0, 1, 851966, 0, 3, 851967, 0, 2, 786432, 0, 2, 917488, 1, 3, 917489, 1, 3, 917490, 1, 3, 917500, 0, 0, 917501, 0, 0, 917502, 0, 1, 917503, 0, 2, 851968, 4, 1, 851970, 1, 0, 983024, 1, 3, 983025, 1, 3, 983026, 1, 3, 983027, 1, 2, 983036, 0, 1, 983037, 0, 1, 983038, 0, 2, 1048560, 1, 0, 1048561, 1, 0, 1048562, 1, 0, 1048563, 1, 1, 1048572, 0, 3, 1048573, 0, 1, 1048574, 0, 4, 983040, 0, 2, 983041, 0, 2, 1114096, 1, 3, 1114097, 1, 2, 1114098, 1, 2, 1114099, 1, 3, 1114108, 0, 3, 1114109, 0, 4, 1114111, 0, 0, 1048577, 0, 1, 1048579, 4, 1, 1179632, 1, 2, 1179633, 1, 0, 1179634, 1, 2, 1179635, 1, 0, 1179643, 0, 3, 1179644, 0, 0, 1179645, 0, 4, 1179646, 4, 2, 1114113, 0, 3, 1245169, 1, 3, 1245170, 1, 0, 1245171, 1, 1, 1245179, 0, 1, 1245180, 0, 2, 1245181, 0, 1, 1179648, 0, 3, 1179652, 0, 2, 1179653, 0, 1, 1310706, 1, 0, 1310716, 0, 0, 1245184, 0, 0, 1245187, 0, 3, 1245188, 0, 2, 1245189, 0, 4, 1376251, 0, 1, 1376252, 4, 2, 1310720, 0, 3, 1310721, 0, 1, 1310722, 0, 3, 1310724, 0, 4, 1310725, 1, 1, 1441786, 0, 0, 1441787, 4, 2, 1441788, 4, 1, 1441789, 4, 0, 1441791, 0, 4, 1376256, 0, 3, 1376259, 1, 0, 1376260, 1, 0, 1376261, 0, 1, 1376262, 1, 0, 1507322, 0, 3, 1507323, 4, 0, 1507324, 4, 2, 1507325, 4, 2, 1507326, 0, 1, 1507327, 0, 1, 1441792, 0, 3, 1441793, 0, 2, 1441794, 0, 4, 1441795, 1, 2, 1441796, 1, 2, 1441797, 1, 1, 1441798, 1, 1, 1572860, 4, 1, 1507330, 0, 0, 1507331, 0, 3, 1507332, 1, 0, 1507333, 1, 1, 1572867, 0, 3, 1572869, 1, 2 )
 
 [node name="PathTileMap" parent="." index="1"]
 tile_data = PoolIntArray( -3, 0, 196608, -2, 0, 196609, -1, 0, 7, 65535, 0, 65539, 131071, 0, 196612, 65536, 0, 196609, 65537, 0, 196609, 65538, 0, 196609, 65539, 0, 196609, 65540, 0, 7, 131076, 0, 65539, 196612, 0, 65539, 327679, 0, 4, 262144, 0, 196609, 262145, 0, 196609, 262146, 0, 196609, 262147, 0, 196609, 262148, 0, 196615, 393215, 0, 131075, 851974, 0, 196608, 851975, 0, 196610, 1572864, 0, 3, 1638400, 0, 65539, 1703936, 0, 65539, 1769472, 0, 65539, 1835008, 0, 65539, 1900544, 0, 65539, 1966080, 0, 131075 )
@@ -29,112 +28,68 @@ position = Vector2( 2, 555 )
 [node name="RedMushroom" parent="YSort" index="1" instance=ExtResource( 5 )]
 position = Vector2( -68, 302 )
 
-[node name="ShadowSprite" parent="YSort/RedMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/RedMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/RedMushroom" index="2"]
 debuff_mod_strength = 200.0
 
 [node name="YellowMushroom" parent="YSort" index="2" instance=ExtResource( 4 )]
 position = Vector2( 28, 381 )
 
-[node name="ShadowSprite" parent="YSort/YellowMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/YellowMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/YellowMushroom" index="2"]
 debuff_mod_strength = 150.0
 
 [node name="PinkMushroom" parent="YSort" index="3" instance=ExtResource( 6 )]
 position = Vector2( -75, 452 )
 
-[node name="ShadowSprite" parent="YSort/PinkMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/PinkMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/PinkMushroom" index="2"]
 debuff_mod_strength = 150.0
 
 [node name="OrangeMushroom" parent="YSort" index="4" instance=ExtResource( 3 )]
 position = Vector2( -107, 203 )
 
-[node name="ShadowSprite" parent="YSort/OrangeMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/OrangeMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/OrangeMushroom" index="2"]
 debuff_mod_strength = 200.0
 
 [node name="BlueMushroom" parent="YSort" index="5" instance=ExtResource( 7 )]
 position = Vector2( -10, 204 )
 
-[node name="ShadowSprite" parent="YSort/BlueMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/BlueMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/BlueMushroom" index="2"]
 debuff_mod_strength = 100.0
 
 [node name="WhiteMushroom" parent="YSort" index="6" instance=ExtResource( 2 )]
 position = Vector2( 14, 286 )
 
-[node name="ShadowSprite" parent="YSort/WhiteMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/WhiteMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/WhiteMushroom" index="2"]
 debuff_mod_strength = 150.0
 
 [node name="OrangeMushroom2" parent="YSort" index="7" instance=ExtResource( 3 )]
 position = Vector2( 92, 355 )
 
-[node name="ShadowSprite" parent="YSort/OrangeMushroom2" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/OrangeMushroom2" index="3"]
+[node name="MushroomStats" parent="YSort/OrangeMushroom2" index="2"]
 debuff_mod_strength = 100.0
 
 [node name="RedMushroom2" parent="YSort" index="8" instance=ExtResource( 5 )]
 position = Vector2( 103, 434 )
 
-[node name="ShadowSprite" parent="YSort/RedMushroom2" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/RedMushroom2" index="3"]
+[node name="MushroomStats" parent="YSort/RedMushroom2" index="2"]
 debuff_mod_strength = 100.0
 
 [node name="YellowMushroom2" parent="YSort" index="9" instance=ExtResource( 4 )]
 position = Vector2( 86, 203 )
 
-[node name="ShadowSprite" parent="YSort/YellowMushroom2" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/YellowMushroom2" index="3"]
+[node name="MushroomStats" parent="YSort/YellowMushroom2" index="2"]
 buff_mod_strength = 250.0
 debuff_mod_strength = 250.0
 
 [node name="PinkMushroom2" parent="YSort" index="10" instance=ExtResource( 6 )]
 position = Vector2( 88, 294 )
 
-[node name="ShadowSprite" parent="YSort/PinkMushroom2" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/PinkMushroom2" index="3"]
+[node name="MushroomStats" parent="YSort/PinkMushroom2" index="2"]
 debuff_mod_strength = 170.0
 
 [node name="BlueMushroom2" parent="YSort" index="11" instance=ExtResource( 7 )]
 position = Vector2( -50, 365 )
 
-[node name="ShadowSprite" parent="YSort/BlueMushroom2" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/BlueMushroom2" index="3"]
+[node name="MushroomStats" parent="YSort/BlueMushroom2" index="2"]
 debuff_mod_strength = 190.0
 
 [editable path="YSort/RedMushroom"]

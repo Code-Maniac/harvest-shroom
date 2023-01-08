@@ -1,0 +1,182 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Mushrooms/YellowMushroom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Critters/Bird.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Title/EndScreen.gd" type="Script" id=3]
+[ext_resource path="res://Font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Mushrooms/RedMushroom.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Mushrooms/OrangeMushroom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Mushrooms/BlueMushroom.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Mushrooms/GoldMushroom.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Mushrooms/PinkMushroom.tscn" type="PackedScene" id=9]
+[ext_resource path="res://AutoTiles/MazeWallTileMap.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Mushrooms/WhiteMushroom.tscn" type="PackedScene" id=11]
+[ext_resource path="res://AutoTiles/PathTileMap.tscn" type="PackedScene" id=12]
+[ext_resource path="res://AutoTiles/LogTileMap.tscn" type="PackedScene" id=13]
+[ext_resource path="res://AutoTiles/GrassTileMap.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Title/trippin_sprite.png" type="Texture" id=15]
+[ext_resource path="res://Title/rucksack.png" type="Texture" id=16]
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 15 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 15 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 15 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 15 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 15 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 15 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 15 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 15 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 15 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 15 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 15 )
+region = Rect2( 352, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "Tripping",
+"speed": 9.0
+} ]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="GrassTileMap" parent="." instance=ExtResource( 14 )]
+position = Vector2( 84, 139 )
+tile_data = PoolIntArray( -1048578, 0, 0, -1048577, 0, 0, -1114112, 0, 0, -983043, 0, 0, -1048576, 0, 0, -917508, 0, 0, -917507, 0, 0, -917506, 0, 0, -917505, 0, 0, -851974, 0, 0, -851973, 0, 0, -851972, 0, 0, -851971, 0, 0, -851970, 0, 0, -851969, 0, 0, -786436, 0, 0, -851968, 0, 0, -851967, 0, 0, -720900, 0, 0, -720899, 0, 0, -786431, 0, 0, -655364, 0, 0, -655363, 0, 0, -655362, 0, 0, -655361, 0, 0, -720896, 0, 0, -720895, 0, 0, -589826, 0, 0, -524292, 0, 0, -524291, 0, 0, -458757, 0, 0, -327682, 1, 0, -327681, 1, 0, -393215, 1, 0, -393214, 1, 0, -393213, 1, 0, -262146, 0, 0, -262145, 1, 0, -327680, 1, 0, -327679, 1, 0, -327678, 1, 0, -327677, 4, 0, -327676, 1, 0, -327675, 1, 0, -327674, 0, 0, -327673, 0, 0, -196612, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 4, 0, -262141, 1, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -262135, 1, 0, -262132, 2, 0, -262131, 2, 0, -131077, 0, 0, -131076, 0, 0, -131075, 1, 0, -131074, 1, 0, -131073, 0, 0, -196608, 1, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 1, 0, -196601, 1, 0, -196600, 1, 0, -196599, 0, 0, -196598, 1, 0, -196597, 2, 0, -65541, 0, 0, -65538, 1, 0, -65537, 4, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 1, 0, -131065, 1, 0, -131064, 1, 0, -131063, 1, 0, -131061, 1, 0, -4, 0, 0, -3, 4, 0, -2, 0, 0, -1, 0, 0, -65536, 1, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 4, 0, -65527, 1, 0, -65526, 1, 0, 65533, 0, 0, 65534, 1, 0, 65535, 1, 0, 0, 0, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 4, 0, 7, 0, 0, 8, 0, 0, 9, 1, 0, 10, 1, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 196604, 1, 0, 196605, 1, 0, 196606, 0, 0, 196607, 0, 0, 131073, 1, 0, 131074, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 262140, 1, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196611, 1, 0, 196613, 1, 0, 262147, 1, 0, 262148, 1, 0, 458764, 5, 0 )
+
+[node name="PathTileMap" parent="." instance=ExtResource( 12 )]
+scale = Vector2( 1.5, 1.5 )
+tile_data = PoolIntArray( 327686, 0, 4, 327687, 0, 196610, 393220, 0, 0, 393221, 0, 5, 393222, 0, 196615, 458755, 0, 0, 458756, 0, 65545, 458757, 0, 131074, 524291, 0, 65536, 524292, 0, 65538, 589827, 0, 131072, 589828, 0, 131074 )
+
+[node name="LogTileMap" parent="." instance=ExtResource( 13 )]
+tile_data = PoolIntArray( 65540, 0, 65537, 65544, 0, 0, 65545, 0, 1, 65546, 0, 2, 131073, 0, 65537, 196617, 0, 65537 )
+
+[node name="MazeWallTileMap" parent="." instance=ExtResource( 10 )]
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 1, -65526, 0, 1, -65525, 0, 1, -65524, 0, 1, -65523, 0, 1, -65522, 0, 2, 65535, 0, 65536, 0, 0, 65537, 1, 0, 65537, 2, 0, 65541, 3, 0, 131073, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131073, 8, 0, 131073, 9, 0, 131073, 10, 0, 131073, 11, 0, 65542, 12, 0, 65537, 13, 0, 65537, 14, 0, 65538, 131071, 0, 65536, 65536, 0, 65541, 65537, 0, 131073, 65538, 0, 131074, 65547, 0, 131072, 65548, 0, 131073, 65549, 0, 65542, 65550, 0, 65538, 196607, 0, 65536, 131072, 0, 65538, 131085, 0, 65536, 131086, 0, 65538, 262143, 0, 65536, 196608, 0, 65538, 196621, 0, 65536, 196622, 0, 65538, 327679, 0, 65536, 262144, 0, 65538, 262157, 0, 65536, 262158, 0, 65538, 393215, 0, 65536, 327680, 0, 65538, 327693, 0, 65536, 327694, 0, 65538, 458751, 0, 65536, 393216, 0, 65538, 393229, 0, 65536, 393230, 0, 65538, 524287, 0, 65536, 458752, 0, 131077, 458753, 0, 1, 458754, 0, 2, 458758, 0, 0, 458759, 0, 1, 458760, 0, 1, 458761, 0, 1, 458762, 0, 1, 458763, 0, 1, 458764, 0, 1, 458765, 0, 131078, 458766, 0, 65538, 589823, 0, 131072, 524288, 0, 131073, 524289, 0, 131073, 524290, 0, 131074, 524294, 0, 131072, 524295, 0, 131073, 524296, 0, 131073, 524297, 0, 131073, 524298, 0, 131073, 524299, 0, 131073, 524300, 0, 131073, 524301, 0, 131073, 524302, 0, 131074 )
+
+[node name="Rucksack" type="Sprite" parent="."]
+position = Vector2( 220, 92 )
+texture = ExtResource( 16 )
+
+[node name="OrangeMushroom" parent="." instance=ExtResource( 6 )]
+position = Vector2( 97, 98 )
+
+[node name="PinkMushroom" parent="." instance=ExtResource( 9 )]
+position = Vector2( 123, 117 )
+
+[node name="RedMushroom" parent="." instance=ExtResource( 5 )]
+position = Vector2( 238, 128 )
+
+[node name="WhiteMushroom" parent="." instance=ExtResource( 11 )]
+position = Vector2( 202, 116 )
+
+[node name="YellowMushroom" parent="." instance=ExtResource( 1 )]
+position = Vector2( 228, 100 )
+
+[node name="GoldMushroom" parent="." instance=ExtResource( 8 )]
+position = Vector2( 124, 77 )
+
+[node name="WhiteMushroom" parent="GoldMushroom" instance=ExtResource( 11 )]
+position = Vector2( -61, 42 )
+
+[node name="YellowMushroom" parent="GoldMushroom" instance=ExtResource( 1 )]
+position = Vector2( -76, -1 )
+
+[node name="WhiteMushroom2" parent="GoldMushroom" instance=ExtResource( 11 )]
+position = Vector2( 141, 2 )
+
+[node name="OrangeMushroom" parent="GoldMushroom" instance=ExtResource( 6 )]
+position = Vector2( 176, -21 )
+
+[node name="PinkMushroom" parent="GoldMushroom" instance=ExtResource( 9 )]
+position = Vector2( 151, 32 )
+
+[node name="BlueMushroom" parent="GoldMushroom" instance=ExtResource( 7 )]
+position = Vector2( -90, 28 )
+
+[node name="BlueMushroom2" parent="GoldMushroom" instance=ExtResource( 7 )]
+position = Vector2( 143, 70 )
+
+[node name="OrangeMushroom2" parent="GoldMushroom" instance=ExtResource( 6 )]
+position = Vector2( -52, 79 )
+
+[node name="WhiteMushroom3" parent="GoldMushroom" instance=ExtResource( 11 )]
+position = Vector2( 178, 62 )
+
+[node name="BlueMushroom3" parent="GoldMushroom" instance=ExtResource( 7 )]
+position = Vector2( 182, 12 )
+
+[node name="RedMushroom" parent="GoldMushroom" instance=ExtResource( 5 )]
+position = Vector2( -82, 70 )
+
+[node name="RedMushroom2" parent="GoldMushroom" instance=ExtResource( 5 )]
+position = Vector2( -57, -32 )
+
+[node name="GoldMushroom2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 200, 75 )
+
+[node name="Bird" parent="." instance=ExtResource( 2 )]
+position = Vector2( 228, 78 )
+
+[node name="Bird2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 35, 54 )
+
+[node name="Bird3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 217, 176 )
+
+[node name="Bird4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 240, 32 )
+
+[node name="Thanks" type="Label" parent="."]
+margin_left = 84.0
+margin_top = 139.0
+margin_right = 388.0
+margin_bottom = 193.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 4 )
+text = "Thanks For Playing!
+By Nick and Pete
+"
+align = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 164, 96 )
+frames = SubResource( 13 )
+animation = "Tripping"
+playing = true

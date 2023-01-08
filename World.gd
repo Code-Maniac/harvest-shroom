@@ -2,7 +2,7 @@ extends Node2D
 
 export(String) var first_level = "res://Levels/Level1.tscn"
 var title_level = "res://Title/TitleScreen.tscn"
-var credits_level = ""
+var credits_level = "res://Title/EndScreen.tscn"
 var current_level = ""
 
 func _ready():
@@ -16,6 +16,8 @@ func set_next_level():
 	var next_level = ""
 	if current_level == title_level:
 		next_level = first_level
+	elif current_level == credits_level:
+		next_level = title_level
 	else:
 		var level_name = get_node("Level").filename
 		next_level = "res://Levels/Level" + str(int(level_name) + 1) + ".tscn"
@@ -29,6 +31,13 @@ func load_title_level():
 		add_child(level.instance())
 		current_level = title_level
 
+func load_credits_level():
+	var level = load(credits_level)
+
+	if level != null:
+		add_child(level.instance())
+		current_level = credits_level
+
 func set_level(res_path):
 	var existing_level = get_node("Level")
 	if existing_level != null:
@@ -36,10 +45,23 @@ func set_level(res_path):
 		remove_child(existing_level)
 
 	current_level = res_path
-	var level = load(current_level)
+	var file = File.new()
+	var exists = file.file_exists(current_level)
+
+	var level = null
+	if exists:
+		level = load(current_level)
 
 	if level != null:
 		add_child(level.instance())
 	else:
-		print("Winner winner chicken dinner")
-		# you've won the game - go to the credits scene
+		load_credits_level()
+
+	set_camera_zoom()
+
+func set_camera_zoom():
+	if current_level == title_level or current_level == credits_level:
+		get_node("Camera").position = Vector2(160, 90)
+		get_node("Camera").zoom = Vector2(1, 1)
+	else:
+		get_node("Camera").zoom = Vector2(1.25, 1.25)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Mushrooms/YellowMushroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Mushrooms/BlueMushroom.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Mushrooms/WhiteMushroom.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Mushrooms/RedMushroom.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Critters/Bird.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=8]
 
 [node name="Level" instance=ExtResource( 3 )]
 
@@ -26,11 +25,7 @@ tile_data = PoolIntArray( -1310718, 0, 0, -1310717, 0, 1, -1310716, 0, 1, -13107
 [node name="YellowMushroom" parent="YSort" index="0" instance=ExtResource( 1 )]
 position = Vector2( -132, -156 )
 
-[node name="ShadowSprite" parent="YSort/YellowMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/YellowMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/YellowMushroom" index="2"]
 debuff_mod_strength = 300.0
 
 [node name="LevelEnd" parent="YSort" index="1"]
@@ -39,51 +34,31 @@ position = Vector2( 74, -379 )
 [node name="PinkMushroom" parent="YSort" index="2" instance=ExtResource( 4 )]
 position = Vector2( -12, -62 )
 
-[node name="ShadowSprite" parent="YSort/PinkMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/PinkMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/PinkMushroom" index="2"]
 debuff_mod_strength = 400.0
 
 [node name="BlueMushroom" parent="YSort" index="3" instance=ExtResource( 2 )]
 position = Vector2( -13, -165 )
 
-[node name="ShadowSprite" parent="YSort/BlueMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/BlueMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/BlueMushroom" index="2"]
 debuff_mod_strength = 250.0
 
 [node name="BlueMushroom2" parent="YSort" index="4" instance=ExtResource( 2 )]
 position = Vector2( 276, -94 )
 
-[node name="ShadowSprite" parent="YSort/BlueMushroom2" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/BlueMushroom2" index="3"]
+[node name="MushroomStats" parent="YSort/BlueMushroom2" index="2"]
 debuff_mod_strength = 450.0
 
 [node name="WhiteMushroom" parent="YSort" index="5" instance=ExtResource( 5 )]
 position = Vector2( -109, -278 )
 
-[node name="ShadowSprite" parent="YSort/WhiteMushroom" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/WhiteMushroom" index="3"]
+[node name="MushroomStats" parent="YSort/WhiteMushroom" index="2"]
 debuff_mod_strength = 350.0
 
 [node name="WhiteMushroom2" parent="YSort" index="6" instance=ExtResource( 5 )]
 position = Vector2( 274, -300 )
 
-[node name="ShadowSprite" parent="YSort/WhiteMushroom2" index="0"]
-position = Vector2( 0, 8 )
-texture = ExtResource( 8 )
-
-[node name="MushroomStats" parent="YSort/WhiteMushroom2" index="3"]
+[node name="MushroomStats" parent="YSort/WhiteMushroom2" index="2"]
 debuff_mod_strength = 350.0
 
 [node name="RedMushroom" parent="YSort" index="7" instance=ExtResource( 6 )]
@@ -94,6 +69,15 @@ position = Vector2( 161, -100 )
 
 [node name="LevelStart" parent="." index="5"]
 position = Vector2( -11, 31 )
+
+[node name="Bird" parent="." index="6" instance=ExtResource( 7 )]
+position = Vector2( 20, 18 )
+
+[node name="Bird2" parent="." index="7" instance=ExtResource( 7 )]
+position = Vector2( -479, -164 )
+
+[node name="Bird3" parent="." index="8" instance=ExtResource( 7 )]
+position = Vector2( -67, -256 )
 
 [editable path="YSort/YellowMushroom"]
 [editable path="YSort/PinkMushroom"]

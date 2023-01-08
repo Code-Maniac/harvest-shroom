@@ -10,7 +10,6 @@
 [node name="Level" type="Node2D"]
 
 [node name="GrassTileMap" parent="." instance=ExtResource( 2 )]
-scale = Vector2( 1.5, 1.5 )
 
 [node name="PathTileMap" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 1.5, 1.5 )

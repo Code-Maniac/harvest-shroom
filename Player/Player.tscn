@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/ForagerBill.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://SoundEffects/debuff.wav" type="AudioStream" id=4]
 [ext_resource path="res://SoundEffects/buff.wav" type="AudioStream" id=5]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SoundEffects/die.wav" type="AudioStream" id=7]
 
 [sub_resource type="CapsuleShape2D" id=40]
 radius = 8.0
@@ -59,6 +60,20 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AnimSoundPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0.3 )
 }
 
 [sub_resource type="Animation" id=16]
@@ -607,7 +622,7 @@ parameters/Walk/blend_position = Vector2( -0.00245297, 0.00249374 )
 
 [node name="AnimSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( -1, 1 )
-stream = ExtResource( 4 )
+stream = ExtResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
