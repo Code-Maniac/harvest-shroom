@@ -54,7 +54,6 @@ visible = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 10 )
-frame = 5
 playing = true
 
 [node name="MushroomStats" parent="." index="3"]
