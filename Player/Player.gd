@@ -80,8 +80,6 @@ func _ready():
 
 	$RemoteTransform2D.remote_path = "/root/World/Camera"
 
-	print(collision_layer)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -131,12 +129,12 @@ func _state_dying(_delta):
 	# all we do here is set the dying animation here
 	# when the dying animation finishes the player is freed and the level will
 	# restart with the player respawning
-	animState.travel("Die")
+	animState.travel("Dying")
 
-	var death_effect = death_effect_preload.instance()
-	get_parent().add_child(death_effect)
-	death_effect.global_position = global_position
-	queue_free()
+	# var death_effect = death_effect_preload.instance()
+	# get_parent().add_child(death_effect)
+	# death_effect.global_position = global_position
+	# queue_free()
 
 func _state_win(_delta):
 	# all we are doing here is waiting for the win animation to finish
@@ -211,7 +209,6 @@ func _eat_mushroom(mushroom):
 	velocity = Vector2.ZERO
 
 func _handle_mushrooms(distance_moved):
-	# print(mushrooms)
 	for mushroom in mushrooms:
 		if mushroom.debuff == Debuff.DEATH_OVER_DISTANCE:
 			mushroom.distance_moved += distance_moved
@@ -238,17 +235,15 @@ func _cure_debuffs(cure):
 
 		mushrooms = new_array
 
-
-
-
 func eating_animation_finished():
 	state = STATE_MOVING
 
 	_cure_debuffs(eaten_mushroom.debuff_cure)
 	eaten_mushroom.active = true
-	mushrooms.append(eaten_mushroom)
-	eaten_mushroom.connect("expired", self, "_on_mushroom_debuff_expired")
-	emit_signal("mushroom_eaten", eaten_mushroom)
+	if eaten_mushroom.debuff != Debuff.NONE:
+		mushrooms.append(eaten_mushroom)
+		eaten_mushroom.connect("expired", self, "_on_mushroom_debuff_expired")
+		emit_signal("mushroom_eaten", eaten_mushroom) # don't emit this if NONE
 	eaten_mushroom = null
 
 func _on_mushroom_debuff_expired(debuff, strength):
@@ -260,9 +255,14 @@ func _on_mushroom_debuff_expired(debuff, strength):
 
 func _on_LevelEndDetector_area_entered(area:Area2D):
 	state = STATE_WIN
-	get_node("/root/World").set_next_level() 
+	print("LEVEL END")
+	get_node("/root/World/SceneTransition").next_scene()
+	# get_node("/root/World").set_next_level() 
 	# we then want to set the animation then wait for the celebration animation
 	# to end
 	# then change the level
 	# maybe have a transition animation - ala fade out / fade in
 
+func death_animation_finished():
+	queue_free()
+	get_node("/root/World/SceneTransition").reload_scene()

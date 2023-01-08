@@ -38,20 +38,20 @@ export(int,
 	"Red",
 	"Green",
 	"Blue",
-	"Purple",
+	"Pink",
 	"Yellow",
 	"Cyan",
-	"Black") var debuff_type = DebuffType.WHITE
+	"Orange") var debuff_type = DebuffType.WHITE
 export(int,
 	"None",
 	"White",
 	"Red",
 	"Green",
 	"Blue",
-	"Purple",
+	"Pink",
 	"Yellow",
 	"Cyan",
-	"Black",
+	"Orange",
 	"All") var debuff_cure = DebuffType.WHITE
 
 # how many points is the mushroom worth
@@ -65,9 +65,7 @@ signal expired(debuff)
 
 func set_distance(val):
 	distance_moved = val
-	print(str(distance_moved) + " / " + str(debuff_mod_strength))
 	if debuff == Debuff.DEATH_OVER_DISTANCE and distance_moved >= debuff_mod_strength:
-		print("DEATH")
 		emit_signal("expired", debuff, debuff_mod_strength)
 
 func get_distance_remaining():

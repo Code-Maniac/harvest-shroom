@@ -9,6 +9,6 @@ enum {
 	PURPLE,
 	YELLOW,
 	CYAN,
-	BLACK,
+	ORANGE,
 	ALL # only used for cures -> Cures everything
 }
