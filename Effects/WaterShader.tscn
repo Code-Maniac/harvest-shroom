@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise1;
+uniform sampler2D noise2;
+
+uniform vec2 scroll1 = vec2(0.05, 0.05);
+uniform vec2 scroll2 = vec2(-0.05, -0.05);
+uniform float distortion_strength : hint_range(-1, 1) = 1.0;
+uniform vec4 tone_color : hint_color;
+uniform vec4 top_color : hint_color;
+uniform float light_start : hint_range(0.0, 1.0) = 0.275;
+uniform float light_end : hint_range(0.0, 1.0) = 0.4;
+
+void fragment() {
+	float depth = texture(noise1, UV + scroll1 * TIME).r * texture(noise2, UV + scroll2 * TIME).r;
+	vec4 screen_col = texture(SCREEN_TEXTURE, SCREEN_UV + distortion_strength * vec2(depth));
+	vec4 top_light = smoothstep(light_start, light_end, depth) * top_color;
+	COLOR = screen_col * tone_color + top_light;
+	COLOR.a = 1.0;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=4]
+seed = 20
+period = 9.0
+persistence = 0.048
+lacunarity = 1.54
+
+[sub_resource type="NoiseTexture" id=5]
+width = 128
+height = 128
+seamless = true
+noise = SubResource( 4 )
+
+[sub_resource type="OpenSimplexNoise" id=6]
+period = 9.0
+persistence = 0.21
+lacunarity = 0.66
+
+[sub_resource type="NoiseTexture" id=7]
+width = 128
+height = 128
+seamless = true
+noise = SubResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/scroll1 = Vector2( 0.05, 0.05 )
+shader_param/scroll2 = Vector2( -0.05, -0.05 )
+shader_param/distortion_strength = 0.129
+shader_param/tone_color = Color( 0.831373, 0.894118, 0.901961, 0.203922 )
+shader_param/top_color = Color( 0.980392, 0.945098, 0.945098, 1 )
+shader_param/light_start = 0.295
+shader_param/light_end = 0.697
+shader_param/noise1 = SubResource( 5 )
+shader_param/noise2 = SubResource( 7 )
+
+[node name="WaterShader" type="Sprite"]
+material = SubResource( 3 )
+position = Vector2( 1.4433, 6.4742 )
+scale = Vector2( 19.0898, 13.3125 )
+texture = ExtResource( 1 )
